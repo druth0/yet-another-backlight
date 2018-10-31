@@ -13,7 +13,7 @@ int main(int argc, const char* argv[]) {
       value = 10;
      break;
     case 'd':
-      /* increment, increase, inc */
+      /* decrement, decrease, dec */
       value = -10;
       break;
     case 's':
