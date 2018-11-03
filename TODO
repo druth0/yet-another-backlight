@@ -1,0 +1,5 @@
+* Redo the selection mechanism to use getopt as appropriate for a GNU
+   program.
+* Consider detecting the display backlight and keyboard backlight if possible.
+* Consider splitting the keyboard backlight and display backlight components into
+   seperate programs.
