@@ -11,11 +11,11 @@ int main(int argc, const char* argv[]) {
   switch(argv[1][0]) {
     case 'i':
       /* increment, increase, inc */
-      lincrease(argv[1][1] == 'k' ? KEBYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, INCREMENT_AMOUNT);
+      fincrease(argv[1][1] == 'k' ? KEYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, INCREMENT_AMOUNT);
      break;
     case 'd':
       /* decrement, decrease, dec */
-      lincrease(argv[1][1] == 'k' ? KEYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, DECREMENT_AMOUNT);
+      fincrease(argv[1][1] == 'k' ? KEYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, DECREMENT_AMOUNT);
       break;
     case 'p':
       /* percentage */

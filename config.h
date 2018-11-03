@@ -32,7 +32,7 @@
 #define MAX_KEYBOARD_BACKLIGHT_FILENAME "/sys/class/leds/tpacpi::kbd_backlight/max_brightness"
 
 /* The relative amount to increase the backlight by. */
-#define INCREASE_AMOUNT 10
+#define INCREMENT_AMOUNT 10
 
 /* The relative amount to decrease the backlight by. */
-#define DECREASE_AMOUNT -10
+#define DECREMENT_AMOUNT -10

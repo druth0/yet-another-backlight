@@ -5,12 +5,6 @@
 #include <stdlib.h>
 #include "config.h"
 
-void fincrease(char* fname, int amount) {
-  File* stream = fopen(fname, "r+");
-  fprintf(stream, "%d", fread_int(stream) + amount);
-  fclose(stream);
-}
-
 int fread_int(FILE* stream) {
   char* level = malloc(sizeof(char)*LIGHT_DIGITS);
   fread(level, sizeof(level), 1, stream);
@@ -22,6 +16,12 @@ int read_int(char* fname) {
   int rv = fread_int(stream);
   fclose(stream);
   return rv;
+}
+
+void fincrease(char* fname, int amount) {
+  FILE* stream = fopen(fname, "r+");
+  fprintf(stream, "%d", fread_int(stream) + amount);
+  fclose(stream);
 }
 
 int get_percent(char* max_fname, char* fname) {

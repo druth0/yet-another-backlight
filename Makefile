@@ -1,16 +1,11 @@
 # yabl - yet another backlight
 
 SRC = backlight.c lightcontrol.c
-OBJ = ${SRC:.c=.o}
 
 all: yabl
 
-.c.o:
-	gcc -c $<
-${OBJ}: config.h lightcontrol.h
-
-yabl: ${OBJ}
-	gcc -o $A ${OBJ}
+yabl:
+	gcc backlight.c lightcontrol.c config.h lightcontrol.h -o $@
 
 clean:
-	rm -f yabl ${OBJ}
+	rm -f yabl
