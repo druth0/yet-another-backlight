@@ -17,7 +17,7 @@
  * The name identifying the file to interact with as the maximum display
  * backlight level.
  */
-#define MAX_DISPLAY_BACKLIGHT_FILENAME "/sys/class/backlight/intel_backlight/brightness"
+#define MAX_DISPLAY_BACKLIGHT_FILENAME "/sys/class/backlight/intel_backlight/max_brightness"
 
 /*
  * The name identifying the file to interact with as the current keyboard

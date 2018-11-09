@@ -12,7 +12,7 @@ int fread_int(FILE* stream) {
 }
 
 int read_int(char* fname) {
-  FILE* stream = fopen(fname, "r+");
+  FILE* stream = fopen(fname, "r");
   int rv = fread_int(stream);
   fclose(stream);
   return rv;

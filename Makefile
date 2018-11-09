@@ -9,3 +9,7 @@ yabl:
 
 clean:
 	rm -f yabl
+
+install: yabl
+	cp yabl /usr/local/bin/
+	cp 90-lights.rules /etc/udev/rules.d
