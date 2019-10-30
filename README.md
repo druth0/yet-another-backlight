@@ -6,11 +6,19 @@ It is capable of managing both keyboard and LCD backlights.
 
 # Usage
 
-yabl i (increases LCD backlight) yabl d (decreases LCD backlight) yabl ik
-(increases keyboard backlight) yabl dk (decreases keyboard backlight) yabl p
-(prints the percentage of maximum that is currently set for the LCD backlight)
-yabl pk (prints the percentage of maximum that is currently set for the keyboard
+yabl i (increases LCD backlight)
+
+yabl d (decreases LCD backlight)
+
+yabl ik (increases keyboard backlight)
+
+yabl dk (decreases keyboard backlight)
+
+yabl p(prints the percentage of maximum that is currently set for the LCD
 backlight)
+
+yabl pk (prints the percentage of maximum that is currently set for the
+keyboardbacklight)
 
 # Installation
 
