@@ -4,6 +4,8 @@ Yet Another Backlight is just another simple backlight control tool.
 
 It is capable of managing both keyboard and LCD backlights.
 
+Yet Another Backlight is not an official Google product.
+
 # Usage
 
 yabl i (increases LCD backlight)
