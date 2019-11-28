@@ -8,19 +8,11 @@ Yet Another Backlight is not an official Google product.
 
 # Usage
 
-yabl i (increases LCD backlight)
+yabl -i, --increment: increases backlight (optionally by a specified amount)
 
-yabl d (decreases LCD backlight)
+yabl -d, --decrement: decreases backlight (optionally by a specified amount)
 
-yabl ik (increases keyboard backlight)
-
-yabl dk (decreases keyboard backlight)
-
-yabl p(prints the percentage of maximum that is currently set for the LCD
-backlight)
-
-yabl pk (prints the percentage of maximum that is currently set for the
-keyboardbacklight)
+yabl -s, --status: prints the percentage of maximum that is currently set for the backlight
 
 # Installation
 
