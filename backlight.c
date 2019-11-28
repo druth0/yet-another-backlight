@@ -17,34 +17,65 @@
 /*
  * Interacts with files representing backlight configurations.  The program is
  * designed to be mapped to keyboard keys, and can be used to control display or
- * keybaord backlights.
+ * keyboard backlights.
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <getopt.h>
 #include "config.h"
 #include "lightcontrol.h"
 
-int main(int argc, const char* argv[]) {
-  if (argc > 1) {
-    switch(argv[1][0]) {
+int get_amount(int argc, int optind, int alternative, char * const *argv) {
+  return optind >= argc || argv[optind][0] == '-' ? alternative : atoi(argv[optind]);
+}
+
+int main(int argc, char * const *argv) {
+  static struct option long_options[] = {
+    {"increment", optional_argument, 0, 'i' },
+    {"decrement", optional_argument, 0, 'd' },
+    {"status", no_argument, 0, 's' },
+    {"help", no_argument, 0, 'h' },
+    {"version", no_argument, 0, 'V' },
+    {0, 0, 0, 0 },
+  };
+  static char *short_options= "i::d::shV";
+
+  int status = 0;
+  int amount = 0;
+  int option_index = 0;
+  int shortopt = 0;
+
+  while((shortopt = getopt_long(argc, argv, short_options, long_options, &option_index)) != -1) {
+    switch(shortopt) {
       case 'i':
-        /* increment, increase, inc */
-        fincrease(argv[1][1] == 'k' ? KEYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, INCREMENT_AMOUNT);
+        amount = get_amount(argc, optind, INCREMENT_AMOUNT, argv);
         break;
       case 'd':
-        /* decrement, decrease, dec */
-        fincrease(argv[1][1] == 'k' ? KEYBOARD_BACKLIGHT_FILENAME : DISPLAY_BACKLIGHT_FILENAME, DECREMENT_AMOUNT);
+        amount = get_amount(argc, optind, DECREMENT_AMOUNT, argv) * -1;
         break;
-      case 'p':
-        /* percentage */
-        if (argv[1][1] == 'k') {
-          printf("%d%%\n", get_percent(MAX_KEYBOARD_BACKLIGHT_FILENAME, KEYBOARD_BACKLIGHT_FILENAME));
-          break;
-        }
-        printf("%d%%\n", get_percent(MAX_DISPLAY_BACKLIGHT_FILENAME, DISPLAY_BACKLIGHT_FILENAME));
+      case 's':
+        status = 1;
         break;
+      case 'h':
+        /* Print the help message. */
+        printf("Usage: yabl [OPTION...]\n\n  -i, --increment\tincrements the backlight by an optional amount specified, or the default amount if no amount was specified\n  -d, --decrement\tdecrements the backlight by an optional amount specified, or the default amount if no amount was specified\n  -s, --status\treturns the status of the backlight, as a percentage\n -h, --help\t prints this informational message\n -V, --version\t prints the version of yabl being run\n");
+        exit(EXIT_SUCCESS);
+      case 'V':
+        /* Print the version information. */
+        printf("yabl 1.0\n");
+        exit(EXIT_SUCCESS);
+      default:
+        printf("c: %d, c(char): %c, option_index: %d, optind: %d, argument: %s\n", shortopt, shortopt, option_index, optind, argv[optind]);
     }
-  } else {
-    printf("Valid options are i,d,s or p.\n\nUsage:\tbacklight increase (increases by 10)\n\tbacklight decrease (decreases by 10)\n\tbacklight percentage (prints the current percentage of the total backlight potential)\n\n");
   }
-  return 0;
+
+  if (amount) {
+    fincrease(DISPLAY_BACKLIGHT_FILENAME, amount);
+  }
+
+  if (status) {
+    printf("%d%%\n", get_percent(MAX_DISPLAY_BACKLIGHT_FILENAME, DISPLAY_BACKLIGHT_FILENAME));
+  }
+
+  exit(EXIT_SUCCESS);
 }

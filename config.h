@@ -51,4 +51,4 @@
 #define INCREMENT_AMOUNT 10
 
 /* The relative amount to decrease the backlight by. */
-#define DECREMENT_AMOUNT -10
+#define DECREMENT_AMOUNT 10
